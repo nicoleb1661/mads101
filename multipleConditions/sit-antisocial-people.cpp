@@ -12,10 +12,14 @@ bool canSit(vector<bool> row, unsigned int num_people){
 
   bool prev = false; // Previous to first is considered false
   bool next;
+  int ii = 0;
 
   if (num_people == 0) return true;
 
-  for (int ii = 0; ii < row.size();) {
+  // When using a loop where the increment is not constant,
+  // always use a while loop, this will avoid bugs that come up
+  // from auto-loop writting etc. 
+  while (ii < row.size()) {
     // Next to last is considered false
     next = (ii + 1) < row.size() ? row[ii+1] : false;
     /*
